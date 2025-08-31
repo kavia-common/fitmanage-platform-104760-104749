@@ -8,7 +8,7 @@ import 'package:fitness_nutrition_frontend/state/app_state.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  testWidgets('App boots and shows FitManage title in AppBar', (WidgetTester tester) async {
+  testWidgets('App boots and shows FitManage title or splash elements', (WidgetTester tester) async {
     dotenv.testLoad(fileInput: 'API_BASE_URL=http://localhost:8000\nWS_BASE_URL=ws://localhost:8000\n');
 
     await tester.pumpWidget(
@@ -18,7 +18,8 @@ void main() {
       ),
     );
 
-    await tester.pumpAndSettle();
-    expect(find.text('FitManage'), findsOneWidget);
+    await tester.pump(const Duration(milliseconds: 100));
+    // We either see title from AppBar (if routed quickly) or splash elements
+    expect(find.text('FitManage'), findsWidgets);
   });
 }

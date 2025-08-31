@@ -7,8 +7,15 @@ What was added:
   - secondary: #23C667
   - accent: #F47C1F
 - Provider-based AppState with WebSocket connection placeholder
+- Auth flow:
+  - Splash (/splash) attempts auto-login via shared_preferences token
+  - Login (/login) and Register (/register) screens
+  - AuthRepository for /api/auth/login, /api/auth/register, /api/users/me
+  - AuthProvider to manage token, user profile, persistent storage
+  - Role-based landing: professional -> /clients, user/gym -> /dashboard
+  - Logout from profile menu
 - Simple Router (Navigator 2.0) with routes:
-  /dashboard, /workouts, /diet, /clients, /notifications, /settings
+  /splash, /login, /register, /dashboard, /workouts, /diet, /clients, /notifications, /settings
 - Responsive BaseScaffold:
   - Top bar (title, ws status, notifications icon, profile menu)
   - Side nav on wide screens, bottom nav on mobile
@@ -20,5 +27,9 @@ How to run:
 3) flutter run
 
 Notes:
-- http and web_socket_channel dependencies are added for REST/WS integrations.
-- Integrate API calls in the respective module pages and wire to AppState for auth.
+- http and web_socket_channel dependencies are added for REST/WS/notifications integrations.
+- Required .env variables:
+  - API_BASE_URL (e.g., https://your-backend-host)
+  - WS_BASE_URL (e.g., wss://your-backend-host)
+- The token is stored locally using shared_preferences.
+- After successful login, app connects to WebSocket: /api/notifications/ws?token=<JWT>.
