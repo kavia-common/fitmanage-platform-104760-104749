@@ -1,18 +1,24 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fitness_nutrition_frontend/main.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+import 'package:fitness_nutrition_frontend/state/app_state.dart';
 
 void main() {
-  testWidgets('App generation message displayed', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+  TestWidgetsFlutterBinding.ensureInitialized();
 
-    expect(find.text('fitness_nutrition_frontend App is being generated...'), findsOneWidget);
-    expect(find.byType(CircularProgressIndicator), findsOneWidget);
-  });
+  testWidgets('App boots and shows FitManage title in AppBar', (WidgetTester tester) async {
+    dotenv.testLoad(fileInput: 'API_BASE_URL=http://localhost:8000\nWS_BASE_URL=ws://localhost:8000\n');
 
-  testWidgets('App bar has correct title', (WidgetTester tester) async {
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(
+      MultiProvider(
+        providers: [ChangeNotifierProvider(create: (_) => AppState())],
+        child: const MyApp(),
+      ),
+    );
 
-    expect(find.text('fitness_nutrition_frontend'), findsOneWidget);
+    await tester.pumpAndSettle();
+    expect(find.text('FitManage'), findsOneWidget);
   });
 }
