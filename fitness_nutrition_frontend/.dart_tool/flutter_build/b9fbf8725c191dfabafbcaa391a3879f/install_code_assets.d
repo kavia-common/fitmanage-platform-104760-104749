@@ -1,0 +1,1 @@
+ /home/kavia/workspace/code-generation/fitmanage-platform-104760-104749/fitness_nutrition_frontend/.dart_tool/flutter_build/b9fbf8725c191dfabafbcaa391a3879f/native_assets.json: 
