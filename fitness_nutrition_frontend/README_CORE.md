@@ -15,11 +15,14 @@ What was added:
   - Role-based landing: professional -> /clients, user/gym -> /dashboard
   - Logout from profile menu
 - Simple Router (Navigator 2.0) with routes:
-  /splash, /login, /register, /dashboard, /workouts, /diet, /clients, /notifications, /settings
+  /splash, /login, /register, /dashboard, /workouts, /diet, /clients, /notifications, /settings, /subscriptions, /reports
 - Responsive BaseScaffold:
-  - Top bar (title, ws status, notifications icon, profile menu)
+  - Top bar (title, role badge, ws status, notifications icon, profile menu)
   - Side nav on wide screens, bottom nav on mobile
-- Placeholder pages per module
+  - Role-aware menu entries: Clients appears for Professional/Gym; all roles see Workouts, Diet, Reports, Subscriptions, Settings
+- Role-aware Dashboard:
+  - Quick info cards and action tiles tailored for User, Professional, and Gym personas
+- Placeholder pages per module (Workouts, Diet, Clients, Subscriptions, Reports, Notifications, Settings)
 
 How to run:
 1) Provide an .env file at project root (see .env.example)
