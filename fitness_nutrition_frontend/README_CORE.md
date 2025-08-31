@@ -22,7 +22,8 @@ What was added:
   - Role-aware menu entries: Clients appears for Professional/Gym; all roles see Workouts, Diet, Reports, Subscriptions, Settings
 - Role-aware Dashboard:
   - Quick info cards and action tiles tailored for User, Professional, and Gym personas
-- Placeholder pages per module (Workouts, Diet, Clients, Subscriptions, Reports, Notifications, Settings)
+- CRUD UIs added for modules (Workouts, Diet, Clients, Protocols) with Provider state, forms, validation, pagination, and API wiring.
+- New route: /protocols with navigation entry.
 
 How to run:
 1) Provide an .env file at project root (see .env.example)
